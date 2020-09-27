@@ -1,0 +1,181 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: 'Noto Sans', sans-serif;
+    background-color: #bdc3c7;
+}
+
+/*navbar*/
+
+.navBar ul{
+    list-style-type: none;
+    overflow: hidden;
+    padding: 0 150px;
+    background-color: white;
+}
+.navBar li{
+    float: right;
+    padding: 24px 15px;
+    border: 2px solid transparent;
+    transition: 0.2s;
+}
+.navBar li:hover{
+    border-bottom-color: black;
+}
+.navBar a{
+    text-decoration: none;
+    color: black;
+}
+
+.navBar #myAccount{
+    border-bottom-color: black;
+}
+.navBar #modifyLogo{
+    float: left;
+    padding: 0;
+}
+.navBar #modifyLogo:hover{
+    border-bottom-color: transparent;
+}
+.navBar #modifyLogo img{
+    width: 200px;
+}
+
+
+
+
+/*body*/
+.body{
+    width: 80%;
+    display: flex;
+    margin: auto;
+}
+.left_section{
+    width: 30%;
+    height: 400px;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    position: sticky;
+}
+.left_section h1{
+    text-align: center;
+    padding: 20px 0;
+}
+.profile_picture{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #dfe6e9;
+    margin: auto;
+    margin: 30px auto;
+    position: relative;
+}
+.profile_picture input[type="file"]{
+    display: none;
+}
+.photo_uploading{
+    position: absolute;
+    bottom: -40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.photo_uploading label, .photo_uploading input[type='submit']{
+    background-color: #dfe6e9;
+    width: 90px;
+    height: 30px;
+    border: none;
+    border-radius: 4px;
+    margin: 3px;
+    justify-content: center;
+    align-items: center;
+}
+.photo_uploading label {
+    padding: 6px;
+}
+
+
+.right_section{
+    width: 70%;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+.right_section h1{
+    text-align: center;
+}
+
+.add_product{
+    margin: 40px 0;
+}
+.add_product table{
+    margin: auto;
+}
+.add_product table h4{
+    text-align: right;
+    color: #636e72;
+}
+.add_product td{
+    padding: 10px;
+}
+
+.add_product input[type="text"]{
+    height: 30px;
+    width: 300px;
+    border: 1px solid #b2bec3;
+    border-radius: 4px;
+    padding: 0 5px;
+}
+.add_product input[type="submit"]{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 300px;
+    border: 1px solid #b2bec3;
+    border-radius: 4px;
+    margin: 20px auto;
+    background-color: #636e72;
+    color: white;
+}
+
+.add_seller table{
+    margin: auto;
+}
+.add_seller table h4{
+    text-align: right;
+    color: #636e72;
+}
+.add_seller td{
+    padding: 10px;
+}
+.add_seller input[type="text"], .add_seller input[type="password"]{
+    height: 30px;
+    width: 300px;
+    border: 1px solid #b2bec3;
+    border-radius: 4px;
+    padding: 0 5px;
+}
+.add_seller input[type="submit"]{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 300px;
+    border: 1px solid #b2bec3;
+    border-radius: 4px;
+    margin: 20px auto;
+    background-color: #636e72;
+    color: white;
+}

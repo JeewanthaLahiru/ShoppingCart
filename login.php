@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     //validate credentials
     if(empty($username_err) && empty($password_err)){
-        $sql = "SELECT id,username,password FROM admin WHERE username = :username";
+        $sql = "SELECT id,username,password,displayname,role FROM admin WHERE username = :username";
 
         if($stmt = $pdo->prepare($sql)){
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
@@ -40,12 +40,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                         $id = $row["id"];
                         $username = $row["username"];
                         $hashed_password = $row["password"];
+                        $role = $row["role"];
+                        $name = $row["displayname"];
                         if($hashed_password == md5($password)){
                             session_start();
 
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
+                            $_SESSION["role"] = $role;
+                            $_SESSION["name"] = $name;
 
                             header("location:welcome.php");
                         }else{
