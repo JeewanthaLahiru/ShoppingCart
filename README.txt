@@ -7,10 +7,13 @@ admin table
 *displayname
 *profilepic
 
-seller table
-*id
-*username
-*password
-*displayname
-*profilepic
-*company
+products table
+*id(primary key)
+*name
+*price
+*quantity
+*imageOne
+*imageTwo
+*imageThree
+*keywords
+*ownerId(foreign key)
