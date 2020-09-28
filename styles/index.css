@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.navBar ul{
+    overflow: hidden;
+    background-color: #333;
+    list-style: none;
+}
+.navBar li{
+    float: right;
+    padding: 10px 15px;
+}
+.navBar a{
+    color: white;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 600px){
+    .navBar li:not(:last-child){display: none;}
+    .navBar li:last-child{
+        float: left;
+    }
+    .navBar li.iconLi{
+        display: block;
+        float: right;
+    }
+
+    .navBar.responsive{
+        position: relative;
+    }
+    .navBar.responsive .iconLi{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .navBar.responsive li{
+        display: block;
+        float: none;
+        text-align: left;
+    }
+}

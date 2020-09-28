@@ -8,7 +8,7 @@ body{
     background-color: #bdc3c7;
 }
 
-/*navbar*/
+
 
 .navBar ul{
     list-style-type: none;
@@ -47,7 +47,7 @@ body{
 
 
 
-/*body*/
+
 .body{
     width: 80%;
     display: flex;
