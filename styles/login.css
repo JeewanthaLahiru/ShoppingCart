@@ -4,7 +4,7 @@
     padding: 0;
 }
 body{
-    background-color: thistle;
+    background-color: #dfe6e9;
 }
 .navBar ul{
     overflow: hidden;
@@ -65,4 +65,39 @@ body{
     .navBar.responsive li.modifylkicon{
         display: none;
     }
+}
+
+
+
+table{
+    width: 50%;
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px 50px;
+}
+table h4{
+    text-align: right;
+}
+table input[type = "text"]{
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid grey;
+    padding: 5px;
+}
+table td{
+    padding: 10px;
+}
+input[type = "submit"]{
+    display: block;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    width: 200px;
+    background-color: #636e72;
+    color: white;
+}
+table .tags{
+    width: 150px;
 }
