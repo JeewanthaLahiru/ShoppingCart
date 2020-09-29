@@ -94,18 +94,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     </div>
 
     <form action="<?php echo (!empty($username_err)) ? 'has-error' : ''; ?>" method="POST" enctype="multipart/form-data">
-        <table>
-            <caption><h1>Login</h1></caption>
-            <tr>
-                <td class="tags"><h4>Username :</h4></td>
-                <td><input type="text" name="username" id="usernameId" placeholder="Username"><span><?php echo $username_err; ?></span></td>
-            </tr>
-            <tr>
-                <td class="tags"><h4>Password :</h4></td>
-                <td><input type="text" name="password" id="passwordId" placeholder="Password"><span><?php echo $password_err; ?></span></td>
-            </tr>
-        </table>
-        <input type="submit" value="Continue" name="submitBtn">
+        <div class="login_form">
+            <h1>Login</h1>
+            <input type="text" name="username" id="usernameId" placeholder="Username"><span><?php echo $username_err; ?></span><br>
+            <input type="text" name="password" id="passwordId" placeholder="Password"><span><?php echo $password_err; ?></span><br>
+            <hr>
+            <input type="submit" value="Continue" name="submitBtn">
+        </div>
     </form>
 
 
