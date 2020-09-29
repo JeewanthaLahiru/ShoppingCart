@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: thistle;
+}
+.navBar ul{
+    overflow: hidden;
+    background-color: white;
+    padding: 0 150px;
+    list-style: none;
+}
+.navBar li{
+    float: right;
+    color: black;
+    text-decoration: none;
+    padding: 20px;
+}
+.navBar a{
+    text-decoration: none;
+    color: black;
+    
+}
+.navBar .iconLi{
+    display: none;
+}
+.navBar .modifylkicon{
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+.navBar .modifylkicon img{
+    width: 200px;
+}
+
+@media screen and (max-width: 600px){
+    .navBar li:not(:last-child){display: none;}
+    .navBar ul{
+        padding: 0;
+    }
+    .navBar li:last-child{
+        float: left;
+    }
+    .navBar li.iconLi{
+        display: block;
+        float: right;
+    }
+
+
+    .navBar.responsive{
+        position: relative;
+    }
+    .navBar.responsive li.iconLi{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .navBar.responsive li{
+        display: block;
+        float: none;
+        text-align: left;
+    }
+    .navBar.responsive li.modifylkicon{
+        display: none;
+    }
+}

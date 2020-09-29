@@ -76,9 +76,22 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
+
+    <div class="navBar" id="navBarId">
+        <ul>
+            <li class="modifylkicon"><a href="index.php" ><img src="images/modifylklogo_small.png" alt="modifylk"></a></li>
+            <li class="iconLi"><a href="javascript:void(0);" class="icon" onclick="navBarFunction()"><i class="fa fa-bars"></i></a></li>
+            <li><a href="#">Cart</a></li>
+            <li><a href="index.php">Home</a></li>
+        </ul>
+        
+    </div>
 
     <form action="<?php echo (!empty($username_err)) ? 'has-error' : ''; ?>" method="POST" enctype="multipart/form-data">
         <h1>Login</h1>
@@ -88,6 +101,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         <span><?php echo $password_err; ?></span><br>
         <input type="submit" value="Continue" name="submitBtn">
     </form>
+
+
+    <script src="scripts/login.js"></script>
     
 </body>
 </html>
