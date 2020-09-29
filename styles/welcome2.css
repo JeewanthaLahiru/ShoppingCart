@@ -5,7 +5,7 @@
 }
 body{
     font-family: 'Noto Sans', sans-serif;
-    background-color: black;
+    background-color:#dfe6e9;
 }
 
 
@@ -42,6 +42,59 @@ body{
 }
 .navBar #modifyLogo img{
     width: 200px;
+}
+.navBar .iconLi{
+    display: none;
+}
+
+
+@media screen and (max-width: 600px){
+    .navBar ul{padding: 0;}
+    .navBar li:not(:last-child){display: none;}
+    .navBar li:last-child{float: left;}
+    .navBar li.iconLi{
+        display: block;
+        float: right;
+    }
+
+    .navBar.responsive{
+        position: relative;
+    }
+    .navBar.responsive li.iconLi{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .navBar.responsive li{
+        display: block;
+        float: none;
+        text-align: left;
+    }
+    .navBar.responsive li#modifyLogo{
+        display: none;
+    }
+    .navBar.responsive li#myAccount{
+        border-bottom-color: transparent;
+    }
+    .navBar.responsive li:hover{
+        border-bottom-color: transparent;
+    }
+    div.body{
+        width: 100%;
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+    div.left_section{
+        width: 100%;
+        padding: 10px 0;
+        margin: 10px 0;
+    }
+    div.right_section{
+        width: 100%;
+        padding: 10px 0;
+        margin: 10px 0;
+    }
 }
 
 

@@ -243,18 +243,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/welcome.css">
+    <link rel="stylesheet" href="styles/welcome2.css">
     <title>Document</title>
 </head>
 <body>
 
-    <div class="navBar">
+    <div class="navBar" id="navBarId">
         <ul>
+            <li id="modifyLogo"><a href="index.php"><img src="images/modifylklogo_small.png" alt=""></a></li>
+            <li class="iconLi"><a href="javascript:void(0);" onclick="navBarFunction()" class="icon"><i class="fa fa-bars"></i></a></li>
             <li><a href="logout.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a></li>
             <li id="myAccount"><a href="#"><i class="fa fa-user" aria-hidden="true"></i> My account</a></li>
             <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a></li>
             <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-            <li id="modifyLogo"><a href="index.php"><img src="images/modifylklogo_small.png" alt=""></a></li>
+            
         </ul>
     </div>
 
@@ -418,6 +420,9 @@
             </div>
         </div>
     </div>
+
+
+    <script src="scripts/welcome.js"></script>
 
     
 </body>
