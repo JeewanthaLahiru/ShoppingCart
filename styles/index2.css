@@ -3,9 +3,7 @@
     margin: 0;
     padding: 0;
 }
-body{
-    background-color: black;
-}
+
 
 .navBar ul{
     overflow: hidden;
@@ -51,14 +49,20 @@ body{
 .grid-container{
     display: grid;
     grid-template-columns: auto auto auto;
+    margin: auto;
+    width: 800px;
 }
 
 .grid-item{
     width: 250px;
     padding: 12px;
+    border: 1px solid black;
+    margin: 5px;
 }
 .grid-item .main_image{
-    width: 100%;
+    width: 200px;
+    height: 200px;
+    margin: 13px;
 }
 .grid-item .second_images{
     width: 100%;
@@ -66,6 +70,9 @@ body{
     justify-content: center;
 }
 .grid-item .second_images img{
-    width: 100%;
+    width: 100px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 3px;
 }
 
