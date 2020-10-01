@@ -40,33 +40,19 @@
             $upload_picture_err = "please upload three pictures";
         }else{
             $first_image_name = $_FILES["default_picture"]["name"];
-            $first_image_path = $_FILES["default_picture"]["tmp_name"];
-            $first_image_cmps = explode(".",$first_image_name);
-            $first_image_Extention = strtolower(end($first_image_cmps));
-            $first_image_new_name = md5(time().$first_image_name).'.'.$first_image_Extention;
+            $first_image_type = $_FILES["default_picture"]["type"];
+            $first_image_data = file_get_contents($_FILES["default_picture"]["tmp_name"]);
 
             $second_image_name = $_FILES["second_picture"]["name"];
-            $second_image_path = $_FILES["second_picture"]["tmp_name"];
-            $second_image_cmps = explode(".",$second_image_name);
-            $second_image_Extention = strtolower(end($second_image_cmps));
-            $second_image_new_name = md5(time().$second_image_name).'.'.$second_image_Extention;
+            $second_image_type = $_FILES["second_picture"]["type"];
+            $second_image_data = file_get_contents($_FILES["second_picture"]["tmp_name"]);
 
             $third_image_name = $_FILES["third_picture"]["name"];
-            $third_image_path = $_FILES["third_picture"]["tmp_name"];
-            $third_image_cmps = explode(".",$third_image_name);
-            $third_image_Extention = strtolower(end($third_image_cmps));
-            $third_image_new_name = md5(time().$third_image_name).'.'.$third_image_Extention;
+            $third_image_type = $_FILES["third_picture"]["type"];
+            $third_image_data = file_get_contents($_FILES["third_picture"]["tmp_name"]);
         }
 
         if(empty($product_name_err) && empty($product_price_err) && empty($product_quantity_err && empty($upload_picture_err)) && empty($keywords_error)){
-            $uploadFileDir = './images/';
-            $dest_path_one = $uploadFileDir.$first_image_new_name;
-            $dest_path_two = $uploadFileDir.$second_image_new_name;
-            $dest_path_three = $uploadFileDir.$third_image_new_name;
-            
-            move_uploaded_file($first_image_path,$dest_path_one);
-            move_uploaded_file($second_image_path,$dest_path_two);
-            move_uploaded_file($third_image_path,$dest_path_three);
 
             $sql_for_owner_id = "SELECT id FROM admin WHERE username = :username";
             if($stmt = $pdo->prepare($sql_for_owner_id)){
@@ -84,18 +70,52 @@
             
 
 
-            $sql = "INSERT INTO `products`(`name`, `price`, `quantity`, `imageOne`, `imageTwo`, `imageThree`, `keywords`, `ownerId`) VALUES (:productName, :productPrice, :productQuantity, :imageOne, :imageTwo, :imageThree, :keywords, :ownerId)";
+            $sql = "INSERT INTO `products`(`name`, `price`, `quantity`, `keywords`, `ownerId`) VALUES (:productName, :productPrice, :productQuantity, :keywords, :ownerId)";
             if($stmt = $pdo->prepare($sql)){
                 $stmt->bindParam(":productName",$product_name, PDO::PARAM_STR);
                 $stmt->bindParam(":productPrice",$product_price, PDO::PARAM_STR);
                 $stmt->bindParam(":productQuantity",$product_quantity, PDO::PARAM_STR);
-                $stmt->bindParam(":imageOne",$first_image_new_name, PDO::PARAM_STR);
-                $stmt->bindParam(":imageTwo",$second_image_new_name, PDO::PARAM_STR);
-                $stmt->bindParam(":imageThree",$third_image_new_name, PDO::PARAM_STR);
                 $stmt->bindParam(":keywords",$keywords, PDO::PARAM_STR);
                 $stmt->bindParam(":ownerId",$ownerId, PDO::PARAM_STR);
                 if($stmt->execute()){
-                    header("location:welcome.php");
+                    
+                    $sql_of_product_id = "SELECT * FROM products where name=:productNameTwo and price=:productPriceTwo";
+                    if($stmt2 = $pdo->prepare($sql_of_product_id)){
+                        $stmt2->bindParam(":productNameTwo",$product_name);
+                        $stmt2->bindParam(":productPriceTwo",$product_price);
+                        $stmt2->execute();
+                        if($stmt2->rowCount()==1){
+                            if($row = $stmt2->fetch()){
+                                $productId = $row['id'];
+                            }else{
+                                $productId = 0;
+                            }
+                            
+                        }
+                    }
+
+                    $sql_for_upload_images = "INSERT INTO `productimages`(`imagename_one`, `imagename_two`, `imagename_three`, `imagemime_one`, `imagemime_two`, `imagemime_three`, `imagedata_one`, `imagedata_two`, `imagedata_three`, `product_id`) VALUES (:imn1,:imn2,:imn3,:imm1,:imm2,:imm3,:imd1,:imd2,:imd3,:prdid)";
+                    if($stat= $pdo->prepare($sql_for_upload_images)){
+                        $stat->bindParam(":imn1",$first_image_name);
+                        $stat->bindParam(":imn2",$second_image_name);
+                        $stat->bindParam(":imn3",$third_image_name);
+                        $stat->bindParam(":imm1",$first_image_type);
+                        $stat->bindParam(":imm2",$second_image_type);
+                        $stat->bindParam(":imm3",$third_image_type);
+                        $stat->bindParam(":imd1",$first_image_data);
+                        $stat->bindParam(":imd2",$second_image_data);
+                        $stat->bindParam(":imd3",$third_image_data);
+                        $stat->bindParam(":prdid",$productId);
+
+                        if($stat->execute()){
+                            header("location:welcome.php?msg=1");
+                            
+                        }else{
+                            echo "something went wrong";
+                        }
+                    }else{
+                        echo "something went wrong";
+                    }
                 }else{
                     echo "something went wrong";
                 }
@@ -165,7 +185,7 @@
         }
     }
     $profile_pic_error = "";
-    if($_SERVER["REQUEST_METHOD"]=="POST" && $_REQUEST["change_picture"]){
+    if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_REQUEST["change_picture"])){
         if(isset($_FILES['profile_picture_upload']) && $_FILES['profile_picture_upload']['error'] === UPLOAD_ERR_OK){
             $sql_for_get_profile_image2 = 'SELECT * FROM `profilepicture` WHERE ownerId = (SELECT id FROM admin WHERE username = :username)';
             if($stmt = $pdo->prepare($sql_for_get_profile_image2)){
@@ -255,7 +275,7 @@
             <li><a href="logout.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a></li>
             <li id="myAccount"><a href="#"><i class="fa fa-user" aria-hidden="true"></i> My account</a></li>
             <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a></li>
-            <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+            <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
             
         </ul>
     </div>
