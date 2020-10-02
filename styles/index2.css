@@ -45,6 +45,24 @@
 }
 
 
+.body{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.body .body_left{
+    width: 15%;
+    min-height: 100px;
+    background-color: white;
+}
+.body .body_right{
+    width: 15%;
+    min-height: 100px;
+    background-color: black;
+}
+.body .body_center{
+    width: 70%;
+}
 
 .grid-container{
     display: grid;
@@ -83,5 +101,14 @@
     margin: auto;
     border: 1px solid black;
     border-radius: 3px;
+}
+
+.categories{
+    position: fixed;
+    top: 100px;
+    left: 20px;
+}
+.categories ul.categories_main{
+    list-style-type: square;
 }
 
