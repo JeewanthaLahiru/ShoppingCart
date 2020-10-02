@@ -111,4 +111,7 @@
 .categories ul.categories_main{
     list-style-type: square;
 }
+.categories ul.categories_second{
+    margin-left: 15px;
+}
 

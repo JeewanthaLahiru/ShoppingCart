@@ -24,7 +24,7 @@
     <div class="categories">
         <ul class='categories_main'>
             <li><a href="#">Tyres</a>
-                <ul>
+                <ul class='categories_second'>
                     <li><a href="#">15 inch</a></li>
                     <li><a href="#">16 inch</a></li>
                     <li><a href="#">17 inch</a></li>
