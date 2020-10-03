@@ -5,6 +5,7 @@
 }
 
 
+
 .navBar ul{
     overflow: hidden;
     background-color: white;
@@ -85,6 +86,38 @@
     height: 200px;
     background-color: black;
     border-radius: 50%;
+}
+#bmw-logo{
+    background-image: url("../images/bmw-logo.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#maserati-logo{
+    background-image: url("../images/maserati-logo.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: white;
+    border: .5px solid black;
+}
+#audi-logo{
+    background-image: url("../images/audi-logo.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: white;
+    border: .5px solid black;
+}
+#benz-logo{
+    background-image: url("../images/benz-logo.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: white;
+}
+#ferrari-logo{
+    background-image: url("../images/ferrari-logo.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: white;
+    border-radius: 20%;
 }
 
 

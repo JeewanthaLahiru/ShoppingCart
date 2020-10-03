@@ -29,24 +29,24 @@
 
         <div class="category-container">
             <div class="category-item">
-                <div class="square"></div>
-                <h4>Spoilers</h4>
+                <div class="square" id="bmw-logo"></div>
+                <h4>BMW</h4>
             </div>
             <div class="category-item">
-                <div class="square"></div>
-                <h4>Alloy wheels</h4>
+                <div class="square" id="maserati-logo"></div>
+                <h4>Maserati</h4>
             </div>
             <div class="category-item">
-                <div class="square"></div>
-                <h4>Interior Design</h4>
+                <div class="square" id="audi-logo"></div>
+                <h4>Audi</h4>
             </div>
             <div class="category-item">
-                <div class="square"></div>
-                <h4>Hood</h4>
+                <div class="square" id="benz-logo"></div>
+                <h4>Benz</h4>
             </div>
             <div class="category-item">
-                <div class="square"></div>
-                <h4>Roof</h4>
+                <div class="square" id="ferrari-logo"></div>
+                <h4>Ferrari</h4>
             </div>
         </div>
 
