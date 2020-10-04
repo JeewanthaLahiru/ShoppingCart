@@ -25,6 +25,22 @@
     <div class="body">
 
         <div class="banner">
+            <div class="bannerSlides fade" style="background-image: url('images/car_wallpaper001.jpg');background-repeat: no-repeat;background-size: 100%; background-position-y: -280px;">
+                <h1>Sport models</h1>
+                <a href="#"><h3>Read more&#10095;</h3></a>
+            </div>
+            <div class="bannerSlides fade" style="background-image: url('images/suv_wallpaper001.jpg');background-repeat: no-repeat;background-size: 100%; background-position-y: -200px;">
+                <h1>SUV models</h1>
+                <a href="#"><h3>Read more&#10095;</h3></a>
+            </div>
+            <div class="bannerSlides fade" style="background-image: url('images/hatchback_wallpaper001.jpg');background-repeat: no-repeat;background-size: 100%; background-position-y: -200px;">
+                <h1>Hatchback models</h1>
+                <a href="#"><h3>Read more&#10095;</h3></a>
+            </div>
+            <div class="bannerSlides fade" style="background-image: url('images/wagon_wallpaper001.jpg');background-repeat: no-repeat;background-size: 100%; background-position-y: -200px;">
+                <h1>Wagon models</h1>
+                <a href="#"><h3>Read more&#10095;</h3></a>
+            </div>
         </div>
 
         <div class="category-container">
@@ -81,6 +97,21 @@
             </div>
     
     </div>
+    <script>
+        var slideIndex = 0;
+        showSlides();
+        function showSlides(){
+            var i;
+            var slides = document.getElementsByClassName("bannerSlides");
+            for(i=0;i<slides.length;i++){
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if(slideIndex > slides.length){slideIndex = 1}
+            slides[slideIndex-1].style.display = "block";
+            setTimeout(showSlides,4000);
+        }
+    </script>
 
     <script src="scripts/index.js"></script>
 </body>

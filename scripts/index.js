@@ -6,3 +6,4 @@ function responsiveNavBar(){
         x.className = "navBar";
     }
 }
+
