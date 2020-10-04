@@ -29,6 +29,9 @@
 }
 
 @media screen and (max-width: 600px){
+    .navBar ul{
+        padding: 0;
+    }
     .navBar li:not(:last-child){display: none;}
     .navBar li:last-child{
         float: left;
@@ -36,6 +39,9 @@
     .navBar li.iconLi{
         display: block;
         float: right;
+    }
+    .navBar.responsive li.logo{
+        display: none;
     }
 
     .navBar.responsive{
