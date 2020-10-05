@@ -4,7 +4,7 @@ session_start();
 
 //check uf the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
+    header("location: profile.php");
     exit;
 }
 
@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                             $_SESSION["role"] = $role;
                             $_SESSION["name"] = $name;
 
-                            header("location:welcome.php");
+                            header("location:profile.php");
                         }else{
                             $password_err = "The passowrd is not valid";
                         }
@@ -76,7 +76,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/login.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap" rel="stylesheet">
     <title>Document</title>

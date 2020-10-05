@@ -1,75 +1,77 @@
+<?php
+    session_start();
+
+    //if(!isset($_SESSION["logged"]) || $_SESSION["logged"]!==true){
+    //    header("location:login.php");
+    //    exit;
+    //}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/profile.css?v=<?php echo time(); ?>">
+    <title>Profile</title>
 </head>
 <body>
-    <?php
-        session_start();
-        
-        include "db.php";
 
-        $uname = $_REQUEST['username'];
-        $pass = md5($_REQUEST['password']);
-        if(isset($_REQUEST['submitBtn']) && $_REQUEST['submitBtn']=='Create account'){
-            $dispname = $_REQUEST['displayname'];
-            $role = $_REQUEST['role'];
-
-            $sql = "INSERT INTO `admin`(`username`, `password`, `displayname`, `role`) VALUES ('".$uname."','".$pass."','".$dispname."','".$role."')";
-            $conn->exec($sql);
-
-        }elseif(($_REQUEST['submitBtn']) && $_REQUEST['submitBtn']=='Continue'){
-            $sql = "SELECT * FROM admin WHERE username=:un AND password=:pw";
-        }
-
-        $sql2 = "SELECT * FROM admin WHERE username=:un AND password=:pw";
-
-        $stmt = $conn->prepare($sql2);
-        $stmt->bindParam(':un',$uname);
-        $stmt->bindParam(':pw',$pass);
-        
-        $stmt->execute();
-        
-
-        $result = $stmt->fetchAll();
-        foreach($result as $row){
-            $loggedUserName = $row['username'];
-            $loggedDisplayName = $row['displayname'];
-            $loggedRole = $row['role'];
-        }
-
-        if($stmt->rowCount()==1){
-            $logged = 1;
-        }else{
-            header("Location:index.php?er=1");
-        }
-        
-
-
-        //echo $uname."<br>".$pass;
-    ?>
-
-    <h1>hello</h1>
-    <div style="display:<?php if($loggedRole=='admin'){echo 'block';}else{echo 'none';}?>">
-        <p>These are your products</p>
-        <p><?php
-                echo "username : ".$loggedUserName."<br>";
-                echo "displayname : ".$loggedDisplayName."<br>";
-                echo "role : ".$loggedRole."<br>";
-            ?>
-        </p>
-
-        <h2>add sellers</h2>
-        <form action="sellerSignup.php" method="post">
-            seller name: <input type="text" name="sellerName" id="sellerNameId"><br>
-            seller username: <input type="text" name="sellerUserName" id="sellerUserNameId"><br>
-            seller password: <input type="text" name="sellerPassword" id="sellerPasswordId"><br>
-            <input type="submit" value="Add seller" name="submitBtn">
-        </form>
-    
+    <div class="navBar">
+            <a href="javascript:void(0);" onclick="navBarFunction()" id="icon"><i class="fa fa-bars"></i></a>
+            <a href="logout.php">Logout</a>
+            <a href="#">My cart</a>
+            <a href="index.php">Home</a>
     </div>
+
+    <div class="body">
+        <div class="leftBody">
+            <div class="profilePicture">
+            </div>
+            <button onclick="changeProfile()">Change profile picture</button>
+            <h1>Name</h1>
+            <h2>Bio</h2>
+        </div>
+        <div class="rightBody">
+            <div class="add-product">
+                <h1>add</h1>
+            </div>
+            <div class="add-seller">
+                <h1>add</h1>
+            </div>
+        </div>
+        <div class="update_profile_picture" id="update_profile_picture_id">
+            <div class="update_profile_picture_body">
+                <div class="close">
+                    <a href="javascript:void(0)" onclick="changeProfile()"><i class="fa fa-times" aria-hidden="true"></i></a>
+                </div>
+                <h1>Update profile details</h1>
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" enctype="multipart/form-data">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="file" name="profile_picture" id=""><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="bio" id="" placeholder="Add bio"><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Update" name="profile_pic_update">
+                            </td>
+                        </tr>
+                    </table> 
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <script src="scripts/profile.js"></script>
     
 </body>
 </html>
