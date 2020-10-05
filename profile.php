@@ -1,10 +1,46 @@
 <?php
     session_start();
+    include "config.php";
 
     //if(!isset($_SESSION["logged"]) || $_SESSION["logged"]!==true){
     //    header("location:login.php");
     //    exit;
     //}
+    $profile_err = $bio_err = "";
+    $profile_picture_name = $profile_picture_type = $profile_picture_data = $bio = "";
+    if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_REQUEST["profile_pic_update"])){
+        if($_FILES["profile_picture"]["size"]==0){
+            $profile_err = "1";
+        }else{
+            $profile_picture_name = $_FILES["profile_picture"]["name"];
+            $profile_picture_type = $_FILES["profile_picture"]["type"];
+            $profile_picture_data = file_get_contents($_FILES["profile_picture"]["tmp_name"]);
+        }
+
+        if(empty(trim($_REQUEST["bio"]))){
+            $bio_err = "1";
+        }else{
+            $bio = $_REQUEST["bio"];
+        }
+
+        if(empty($profile_err) && empty($bio_err)){
+            $sql = "INSERT INTO `profilepictures`(`name`, `mime`, `data`, `ownerid`, `bio`) VALUES (:name,:mime,:data,:ownerid,:bio)";
+            if($stmt = $pdo->prepare($sql)){
+                $stmt->bindParam(":name",$profile_picture_name);
+                $stmt->bindParam(":mime",$profile_picture_type);
+                $stmt->bindParam(":data",$profile_picture_data);
+                $stmt->bindParam(":ownerid",$_SESSION["id"]);
+                $stmt->bindParam(":bio",$bio);
+                if($stmt->execute()){
+                    header("location:profile.php?msg=1");
+                }else{
+                    echo "error";
+                }
+            }else{
+                echo "error";
+            }
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,10 +62,22 @@
 
     <div class="body">
         <div class="leftBody">
-            <div class="profilePicture">
+            <div class="profilePicture" style="background-image: url();">
+                <?php
+                    $sql2 = "SELECT * FROM profilepictures WHERE ownerid=:ownerid";
+                    if($stmt2 = $pdo->prepare($sql2)){
+                        $stmt2->bindParam(":ownerid",$_SESSION["id"]);
+                        $stmt2->execute();
+                        if($stmt2->rowCount()==1){
+                            $row = $stmt2->fetch();
+                            echo "<img src='data:".$row['mime'].";base64,".base64_encode($row['data'])."'>";
+                        }
+                    }
+                ?>
             </div>
+            <p><?php echo $profile_err; ?></p>
             <button onclick="changeProfile()">Change profile picture</button>
-            <h1>Name</h1>
+            <h1><?php echo $_SESSION["name"]; ?></h1>
             <h2>Bio</h2>
         </div>
         <div class="rightBody">

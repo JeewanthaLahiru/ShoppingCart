@@ -52,6 +52,10 @@ body{
     background-color: rgb(190, 190, 190);
     border-radius: 50%;
     margin: 20px auto;
+    
+}
+.profilePicture img{
+    width: 100%;
 }
 .leftBody h1,.leftBody h2{
     text-align: center;
