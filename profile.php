@@ -88,7 +88,10 @@
                 <h1>add</h1>
             </div>
         </div>
-        <div class="update_profile_picture" id="update_profile_picture_id">
+        
+    </div>
+
+    <div class="update_profile_picture" id="update_profile_picture_id">
             <div class="update_profile_picture_body">
                 <div class="close">
                     <a href="javascript:void(0)" onclick="changeProfile()"><i class="fa fa-times" aria-hidden="true"></i></a>
@@ -116,7 +119,6 @@
             </div>
             
         </div>
-    </div>
 
 
     <script src="scripts/profile.js"></script>
