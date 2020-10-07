@@ -91,21 +91,8 @@
     height: 400px;
     display: none;
 }
-.fade{
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-@-webkit-keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-  }
-  
-  @keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-  }
+
+
 
 
 .category-container{
@@ -113,9 +100,21 @@
     grid-template-columns: auto auto auto auto auto ;
     margin: auto;
 }
+.category-container a{
+    text-decoration: none;
+    color: black;
+}
+.category-container a:hover{
+    color: rgb(0, 0, 0, 0.5);
+}
+
 .category-item{
     width: 210px;
     margin: auto;
+    transition: .2s;
+}
+.category-item:hover{
+    opacity: 0.5;
 }
 .category-item h4{
     text-align: center;

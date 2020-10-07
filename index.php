@@ -27,42 +27,61 @@
         <div class="banner">
             <div class="bannerSlides fade" style="background-image: url('images/car_wallpaper001.jpg');background-repeat: no-repeat;background-size: 100%; background-position-y: -280px;">
                 <h1>Sport models</h1>
-                <a href="#"><h3>Read more&#10095;</h3></a>
+                <a href="results.php?key=sport"><h3>Read more&#10095;</h3></a>
             </div>
             <div class="bannerSlides fade" style="background-image: url('images/suv_wallpaper001.jpg');background-repeat: no-repeat;background-size: 100%; background-position-y: -200px;">
                 <h1>SUV models</h1>
-                <a href="#"><h3>Read more&#10095;</h3></a>
+                <a href="results.php?key=suv"><h3>Read more&#10095;</h3></a>
             </div>
             <div class="bannerSlides fade" style="background-image: url('images/hatchback_wallpaper001.jpg');background-repeat: no-repeat;background-size: 100%; background-position-y: -200px;">
                 <h1>Hatchback models</h1>
-                <a href="#"><h3>Read more&#10095;</h3></a>
+                <a href="results.php?key=hatchback"><h3>Read more&#10095;</h3></a>
             </div>
             <div class="bannerSlides fade" style="background-image: url('images/wagon_wallpaper001.jpg');background-repeat: no-repeat;background-size: 100%; background-position-y: -200px;">
                 <h1>Wagon models</h1>
-                <a href="#"><h3>Read more&#10095;</h3></a>
+                <a href="results.php?key=wagon"><h3>Read more&#10095;</h3></a>
+            </div>
+            <div class="bannerSlides fade" style="background-image: url('images/van_wallpaper001.jpg');background-repeat: no-repeat;background-size: 100%; background-position-y: -400px;">
+                <h1>Van</h1>
+                <a href="results.php?key=van"><h3>Read more&#10095;</h3></a>
             </div>
         </div>
 
         <div class="category-container">
             <div class="category-item">
-                <div class="square" id="bmw-logo"></div>
-                <h4>BMW</h4>
+                <a href="results.php?key=bmw">
+                    <div class="square" id="bmw-logo"></div>
+                    <h4>BMW</h4>
+                </a>
+                
             </div>
             <div class="category-item">
-                <div class="square" id="maserati-logo"></div>
-                <h4>Maserati</h4>
+                <a href="results.php?key=maserati">
+                    <div class="square" id="maserati-logo"></div>
+                    <h4>Maserati</h4>
+                </a>
+                
             </div>
             <div class="category-item">
-                <div class="square" id="audi-logo"></div>
-                <h4>Audi</h4>
+                <a href="results.php?key=audi">
+                    <div class="square" id="audi-logo"></div>
+                    <h4>Audi</h4>
+                </a>
+                
             </div>
             <div class="category-item">
-                <div class="square" id="benz-logo"></div>
-                <h4>Benz</h4>
+                <a href="results.php?key=benz">
+                    <div class="square" id="benz-logo"></div>
+                    <h4>Benz</h4>
+                </a>
+                
             </div>
             <div class="category-item">
-                <div class="square" id="ferrari-logo"></div>
-                <h4>Ferrari</h4>
+                <a href="results.php?key=ferrari">
+                    <div class="square" id="ferrari-logo"></div>
+                    <h4>Ferrari</h4>
+                </a>
+                
             </div>
         </div>
 
