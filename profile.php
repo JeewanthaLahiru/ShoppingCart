@@ -74,9 +74,9 @@
             <div class="profilePicture" style="background-image: url('<?php echo "data:" . $row2['mime'] . ";base64," . base64_encode($row2['data']); ?>');background-repeat: no-repeat; background-size: cover;">
             </div>
             <p><?php echo $profile_err; ?></p>
-            <button onclick="changeProfile()">Change profile picture</button>
+            <button onclick="changeProfile()"><i class="fa fa-wrench" aria-hidden="true"></i> Update</button>
             <h1><?php echo $_SESSION["name"]; ?></h1>
-            <h2>Bio</h2>
+            <h2><?php echo $row2['bio']; ?></h2>
         </div>
         <div class="rightBody">
             <div class="add-product">
@@ -92,7 +92,7 @@
     <div class="update_profile_picture" id="update_profile_picture_id">
             <div class="update_profile_picture_body">
                 <div class="close">
-                    <a href="javascript:void(0)" onclick="changeProfile()"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <a href="javascript:void(0)" onclick="changeProfile()" class="closeBtn"><i class="fa fa-times" aria-hidden="true"></i></a>
                 </div>
                 <h1>Update profile details</h1>
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" enctype="multipart/form-data">

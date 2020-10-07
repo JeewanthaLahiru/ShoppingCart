@@ -61,6 +61,9 @@ body{
 .leftBody h1,.leftBody h2{
     text-align: center;
 }
+.leftBody button{
+    margin: auto;
+}
 
 .update_profile_picture{
     padding: 20px;
@@ -86,5 +89,14 @@ body{
     position: absolute;
     top: 0;
     right: 0;
+}
+.closeBtn{
+    padding: 10px 20px;
+    margin: 3px;
+    border: none;
+    border-radius: 4px;
+    font-size: 150%;
+    color: white;
+    background-color: red;
 }
 
