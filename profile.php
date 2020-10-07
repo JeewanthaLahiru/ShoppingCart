@@ -62,18 +62,16 @@
 
     <div class="body">
         <div class="leftBody">
-            <div class="profilePicture" style="background-image: url();">
-                <?php
-                    $sql2 = "SELECT * FROM profilepictures WHERE ownerid=:ownerid";
-                    if($stmt2 = $pdo->prepare($sql2)){
-                        $stmt2->bindParam(":ownerid",$_SESSION["id"]);
-                        $stmt2->execute();
-                        if($stmt2->rowCount()==1){
-                            $row = $stmt2->fetch();
-                            echo "<img src='data:".$row['mime'].";base64,".base64_encode($row['data'])."'>";
-                        }
-                    }
-                ?>
+            <?php
+                $sql2 = "SELECT * FROM profilepictures WHERE ownerid=:ownerid";
+                $stmt2 = $pdo->prepare($sql2);
+                    $stmt2->bindParam(":ownerid",$_SESSION["id"]);
+                    $stmt2->execute();
+                    $row2 = $stmt2->fetch();
+                    
+                
+            ?>
+            <div class="profilePicture" style="background-image: url('<?php echo "data:" . $row2['mime'] . ";base64," . base64_encode($row2['data']); ?>');background-repeat: no-repeat; background-size: cover;">
             </div>
             <p><?php echo $profile_err; ?></p>
             <button onclick="changeProfile()">Change profile picture</button>
