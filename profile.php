@@ -80,8 +80,22 @@
         </div>
         <div class="rightBody">
             <div class="add-product">
-                <h1>add</h1>
+                <h1>Add product</h1>
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" enctype="multipart/form-data">
+                    <input type="text" name="product_name" id="" placeholder="Name">
+                    <input type="text" name="product_price" id="" placeholder="Price">
+                    <input type="text" name="product_quantity" id="" placeholder="Quantity">
+                    <label for="first_image_id"><i class="fa fa-camera" aria-hidden="true"></i> Upload image</label>
+                    <input type="file" name="first_image" id="first_image_id">
+                    <label for="second_image_id"><i class="fa fa-camera" aria-hidden="true"></i> Second image</label>
+                    <input type="file" name="second_image" id="second_image_id">
+                    <label for="third_image_id"><i class="fa fa-camera" aria-hidden="true"></i> Third image</label>
+                    <input type="file" name="third_image" id="third_image_id">
+                    <input type="text" name="product_keywords" id="" placeholder="Keywords">
+                    <input type="submit" value="Add product" name="add_product">
+                </form>
             </div>
+            <hr>
             <div class="add-seller">
                 <h1>add</h1>
             </div>
