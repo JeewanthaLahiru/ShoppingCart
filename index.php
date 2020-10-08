@@ -89,25 +89,21 @@
 
             <?php
 
-                $sql = "SELECT * FROM products";
+                $sql = "SELECT * FROM product";
                 if($stmt = $pdo->prepare($sql)){
                     $stmt->execute();
                     while($row = $stmt->fetch()){
+                        echo "<hr>";
                         echo "<div class='grid-item'>";
-                        $sql2 = "SELECT * FROM productimages WHERE product_id=:pid";
-                        if($stmt2 = $pdo->prepare($sql2)){
-                            $stmt2->bindParam(":pid",$row['id']);
-                            $stmt2->execute();
-                            $row2 = $stmt2->fetch();
-                            echo "<img class='main_image' src='data:".$row2['imagemime_one'].";base64,".base64_encode($row2['imagedata_one'])."'>";
-                            echo "<div class='second_images'>";
-                            echo "<img src='data:".$row2['imagemime_two'].";base64,".base64_encode($row2['imagedata_two'])."'>";
-                            echo "<img src='data:".$row2['imagemime_three'].";base64,".base64_encode($row2['imagedata_three'])."'>";
-                            echo "</div>";
-                        }
+                        echo "<div class='grid-image'>";
+                        echo "<img src='data:".$row['fmime'].";base64,".base64_encode($row['fdata'])."'>";
+                        echo "</div>";
+                        echo "<div class='grid-detail'>";
                         echo "<h4>".$row['name']."</h4>";
                         echo "<p>".$row['price']."</p>";
                         echo "</div>";
+                        echo "</div>";
+                        
                     }
                 }
 
