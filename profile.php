@@ -41,6 +41,69 @@
             }
         }
     }
+    $prname_err = $prprice_err = $prquantity_err = $primage_err = $prkeyword_err = "";
+    $prname = $prprice = $prquantity = $prkeyword = "";
+    if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_REQUEST["add_product"])){
+        if(empty(trim($_REQUEST["product_name"]))){
+            $prname_err = "1";
+        }else{
+            $prname = $_REQUEST["product_name"];
+        }
+
+        if(empty(trim($_REQUEST["product_price"]))){
+            $prprice_err = "1";
+        }else{
+            $prprice = $_REQUEST["product_price"];
+        }
+
+        if(empty(trim($_REQUEST["product_quantity"]))){
+            $prquantity_err = "1";
+        }else{
+            $prquantity = $_REQUEST["product_quantity"];
+        }
+
+        if($_FILES["first_image"]["size"]==0 || $_FILES["second_image"]["size"]==0 || $_FILES["third_image"]["size"]==0){
+            $primage_err = "1";
+        }else{
+            $first_mime = $_FILES["first_image"]["type"];
+            $second_mime = $_FILES["second_image"]["type"];
+            $third_mime = $_FILES["third_image"]["type"];
+
+            $first_data = file_get_contents($_FILES["first_image"]["tmp_name"]);
+            $second_data = file_get_contents($_FILES["second_image"]["tmp_name"]);
+            $third_data = file_get_contents($_FILES["third_image"]["tmp_name"]);
+        }
+
+        if(empty(trim($_REQUEST["product_keywords"]))){
+            $prkeyword_err = "1";
+        }else{
+            $prkeyword = $_REQUEST["product_keywords"];
+        }
+
+        if(empty($prname_err) && empty($prprice_err) && empty($prquantity_err) && empty($primage_err) && empty($prkeyword_err)){
+            $sql3 = "INSERT INTO `product`(`name`, `price`, `quantity`, `fmime`, `smime`, `tmime`, `fdata`, `sdata`, `tdata`, `keywords`, `ownerid`) VALUES (:name,:price,:quantity,:fmime,:smime,:tmime,:fdata,:sdata,:tdata,:keywords,:ownerid)";
+            if($stmt3 = $pdo->prepare($sql3)){
+                $stmt3->bindParam(":name",$prname);
+                $stmt3->bindParam(":price",$prprice);
+                $stmt3->bindParam(":quantity",$prquantity);
+                $stmt3->bindParam(":fmime",$first_mime);
+                $stmt3->bindParam(":smime",$second_mime);
+                $stmt3->bindParam(":tmime",$third_mime);
+                $stmt3->bindParam(":fdata",$first_data);
+                $stmt3->bindParam(":sdata",$second_data);
+                $stmt3->bindParam(":tdata",$third_data);
+                $stmt3->bindParam(":keywords",$prkeyword);
+                $stmt3->bindParam(":ownerid",$_SESSION["id"]);
+                if($stmt3->execute()){
+                    header("location:profile.php?msg=11");
+                }else{
+                    echo "error";
+                }
+            }else{
+                echo "error";
+            }
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
