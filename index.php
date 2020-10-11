@@ -158,6 +158,7 @@
         </div>
     
     </div>
+    <div class="footer"></div>
     <script>
         var slideIndex = 0;
         showSlides();
