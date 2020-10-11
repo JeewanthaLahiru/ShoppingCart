@@ -109,7 +109,48 @@
 
             ?>
 
-            </div>
+        </div>
+        <div class="pagination">
+            <?php
+                $number_of_items_per_page = 1;
+                $sql_for_total_result = "SELECT * FROM product";
+                $stmt_for_total_result = $pdo->prepare($sql_for_total_result);
+                $stmt_for_total_result->execute();
+                $row_for_total_result = $stmt_for_total_result->fetchAll();
+                $number_of_results = count($row_for_total_result);
+
+                if(!isset($_REQUEST['pgn'])){
+                    $page_number = 1;
+                }else{
+                    $page_number = $_REQUEST['pgn'];
+                }
+
+                $number_of_pages=ceil($number_of_results/$number_of_items_per_page);
+                
+                $startPage = $page_number - 1;
+                $endPage = $page_number + 1;
+                if($startPage <=0){
+                    $endPage -= ($startPage - 1);
+                    $startPage = 1;
+                }
+                if($endPage > $number_of_pages){
+                    $endPage = $number_of_pages;
+                }
+
+                if($startPage > 1) echo "<a href='index.php?pgn=1'>First</a> <span>...</span> ";
+                for($i = $startPage; $i<=$endPage; $i++){
+                    if($i == $page_number){
+                        echo " <a href='index.php?pgn=$i' class='active'>$i</a> ";
+                    }else{
+                        echo " <a href='index.php?pgn=$i'>$i</a> ";
+                    }
+                    
+                } 
+                if($endPage<$number_of_pages) echo " <span>...</span> <a href='index.php?pgn=$number_of_pages'>Last</a> ";
+
+            ?>
+            
+        </div>
     
     </div>
     <script>

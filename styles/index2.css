@@ -187,3 +187,24 @@
     margin: 12px 0;
 
 }
+
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+.pagination a{
+    float: left;
+    padding: 5px 10px;
+    margin: 4px;
+    text-decoration: none;
+    color: rgb(117, 117, 117);
+}
+.pagination span{
+    padding: 5px 10px;
+    margin: 4px;
+    color: rgb(117, 117, 117);
+}
+.pagination a.active{
+    font-weight: bolder;
+    color: black;
+}
