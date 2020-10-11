@@ -88,8 +88,21 @@
         <div class="grid-container">
 
             <?php
+                $number_of_items_per_page = 3;
+                $sql_for_total_result = "SELECT * FROM product";
+                $stmt_for_total_result = $pdo->prepare($sql_for_total_result);
+                $stmt_for_total_result->execute();
+                $row_for_total_result = $stmt_for_total_result->fetchAll();
+                $number_of_results = count($row_for_total_result);
+                if(!isset($_REQUEST['pgn'])){
+                    $page_number = 1;
+                }else{
+                    $page_number = $_REQUEST['pgn'];
+                }
 
-                $sql = "SELECT * FROM product";
+                $starting_number_of_a_page = ($page_number-1)*$number_of_items_per_page;
+
+                $sql = "SELECT * FROM product LIMIT ".$starting_number_of_a_page.",".$number_of_items_per_page;
                 if($stmt = $pdo->prepare($sql)){
                     $stmt->execute();
                     while($row = $stmt->fetch()){
@@ -112,18 +125,10 @@
         </div>
         <div class="pagination">
             <?php
-                $number_of_items_per_page = 1;
-                $sql_for_total_result = "SELECT * FROM product";
-                $stmt_for_total_result = $pdo->prepare($sql_for_total_result);
-                $stmt_for_total_result->execute();
-                $row_for_total_result = $stmt_for_total_result->fetchAll();
-                $number_of_results = count($row_for_total_result);
+                
+                
 
-                if(!isset($_REQUEST['pgn'])){
-                    $page_number = 1;
-                }else{
-                    $page_number = $_REQUEST['pgn'];
-                }
+                
 
                 $number_of_pages=ceil($number_of_results/$number_of_items_per_page);
                 
