@@ -144,3 +144,42 @@ body{
     display: none;
 }
 
+
+.product-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    margin: auto;
+}
+.product-item{
+    display: flex;
+    padding: 5px;
+    position: relative;
+}
+.product-item a{
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(70, 70, 70);
+}
+.details{
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px;
+}
+.details h4{
+    font-weight: bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.product-item img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+

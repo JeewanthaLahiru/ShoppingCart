@@ -226,18 +226,29 @@
             </div>
             <div class="my_ads">
                 <h1>My ads</h1>
-                <?php
-                    $sql_product = "SELECT * FROM product WHERE ownerid=:ownerid";
-                    if($stmt_product = $pdo->prepare($sql_product)){
-                        $stmt_product->bindParam(":ownerid",$_SESSION["id"]);
-                        $stmt_product->execute();
-                        while($row_product = $stmt_product->fetch()){
-                            echo $row_product["name"]."<br>";
+                <div class="product-container">
+                    <?php
+                        $sql_product = "SELECT * FROM product WHERE ownerid=:ownerid";
+                        if($stmt_product = $pdo->prepare($sql_product)){
+                            $stmt_product->bindParam(":ownerid",$_SESSION["id"]);
+                            $stmt_product->execute();
+                            while($row_product = $stmt_product->fetch()){
+                                echo "<hr>";
+                                echo "<div class='product-item'>";
+                                echo "<img src='data:".$row_product['fmime'].";base64,".base64_encode($row_product['fdata'])."'>";
+                                echo "<div class='details'>";
+                                echo "<h4>".$row_product['name']."</h4>";
+                                echo "<p>".$row_product['price']."</p>";
+                                echo "</div>";
+                                echo "<a href='#'>View more <i class='fa fa-chevron-right'></i></a>";
+                                echo "</div>";
+                            }
+                        }else{
+                            echo "error";
                         }
-                    }else{
-                        echo "error";
-                    }
-                ?>
+                    ?>
+                </div>
+                
             </div>
         </div>
         
