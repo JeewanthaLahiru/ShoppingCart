@@ -160,7 +160,14 @@
             </div>
             <hr>
             <div class="add-seller">
-                <h1>add</h1>
+                <h1>add seller</h1>
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" enctype="multipart/form-data">
+                    <input type="text" name="seller_username" id="" placeholder="Seller Username">
+                    <input type="password" name="seller_password" id="" placeholder="Seller Password">
+                    <input type="password" name="seller_password_confirm" id="" placeholder="Confirm Password">
+                    <input type="text" name="seller_name" id="" placeholder="Seller Name">
+                    <input type="submit" value="Add seller" name="add_seller">
+                </form>
             </div>
         </div>
         

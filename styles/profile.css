@@ -102,20 +102,20 @@ body{
 }
 
 
-.add-product{
+.add-product, .add-seller{
     width: 60%;
     margin: 10px auto;
     border: none;
     padding: 10px;
     
 }
-.add-product h1{
+.add-product h1, .add-seller h1{
     
     text-align: center;
     padding: 15px 0;
 }
 
-.add-product input[type="text"]{
+.add-product input[type="text"], .add-seller input[type="text"], .add-seller input[type="password"]{
     display: inline-block;
     width: 100%;
     margin: 10px 0;
@@ -128,7 +128,7 @@ body{
     width: 100%;
     border: 1px solid black;
 }
-.add-product input[type="submit"]{
+.add-product input[type="submit"], .add-seller input[type="submit"]{
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -136,7 +136,7 @@ body{
     border: none;
     color: white;
 }
-.add-product input[type="submit"]:hover{
+.add-product input[type="submit"]:hover, .add-seller input[type="submit"]:hover{
     background-color:  rgb(42, 131, 69);
     cursor: pointer;
 }
