@@ -224,6 +224,21 @@
                     <input type="submit" value="Add seller" name="add_seller">
                 </form>
             </div>
+            <div class="my_ads">
+                <h1>My ads</h1>
+                <?php
+                    $sql_product = "SELECT * FROM product WHERE ownerid=:ownerid";
+                    if($stmt_product = $pdo->prepare($sql_product)){
+                        $stmt_product->bindParam(":ownerid",$_SESSION["id"]);
+                        $stmt_product->execute();
+                        while($row_product = $stmt_product->fetch()){
+                            echo $row_product["name"]."<br>";
+                        }
+                    }else{
+                        echo "error";
+                    }
+                ?>
+            </div>
         </div>
         
     </div>
