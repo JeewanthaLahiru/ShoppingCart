@@ -104,6 +104,55 @@
             }
         }
     }
+
+    $seller_err = "";
+    $seller_name = $seller_username = $seller_password = $seller_password_confirm = "";
+    if($_SERVER["REQUEST_METHOD"]== "POST" && isset($_REQUEST["add_seller"])){
+        if(empty($_REQUEST["seller_username"])){
+            $seller_err = "1";
+        }else{
+            $seller_username = $_REQUEST["seller_username"];
+        }
+
+        if(empty($_REQUEST["seller_password"])){
+            $seller_err = "1";
+        }else{
+            $seller_password = $_REQUEST["seller_password"];
+        }
+
+        if(empty($_REQUEST["seller_password_confirm"])){
+            $seller_err = "1";
+        }else{
+            $seller_password_confirm = $_REQUEST["seller_password_confirm"];
+        }
+        if(empty($_REQUEST["seller_name"])){
+            $seller_err = "1";
+        }else{
+            $seller_name = $_REQUEST["seller_name"];
+        }
+
+        if($seller_password != $seller_password_confirm){
+            $seller_err = "1";
+        }
+        if(empty($seller_err)){
+            $seller_role = "seller";
+            $sql_seller = "INSERT INTO `admin`(`username`, `password`, `displayname`, `role`) VALUES (:username,:password,:displayname,:role)";
+            if($stmt_seller = $pdo->prepare($sql_seller)){
+                $stmt_seller->bindParam(":username",$seller_username);
+                $stmt_seller->bindParam(":password",md5($seller_password));
+                $stmt_seller->bindParam(":displayname",$seller_name);
+                $stmt_seller->bindParam(":role",$seller_role);
+                if($stmt_seller->execute()){
+                    header("location:profile.php?msg=11");
+                }else{
+                    echo "error";
+                }
+            }else{
+                echo "error";
+            }
+
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -159,7 +208,13 @@
                 </form>
             </div>
             <hr>
-            <div class="add-seller">
+            <div class="add-seller" style="display:<?php
+                if($_SESSION['role']=='admin'){
+                    echo 'block';
+                }else{
+                    echo 'none';
+                }
+            ?>">
                 <h1>add seller</h1>
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" enctype="multipart/form-data">
                     <input type="text" name="seller_username" id="" placeholder="Seller Username">
