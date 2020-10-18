@@ -228,7 +228,26 @@
                 <h1>My ads</h1>
                 <div class="product-container">
                     <?php
-                        $sql_product = "SELECT * FROM product WHERE ownerid=:ownerid";
+                        $sql_for_pages = "SELECT * FROM product WHERE ownerid=:ownerid2";
+                        $stmt_for_pages = $pdo->prepare($sql_for_pages);
+                        $stmt_for_pages->bindParam(":ownerid2",$_SESSION["id"]);
+                        $stmt_for_pages->execute();
+                        $row_for_pages = $stmt_for_pages->fetchAll();
+
+                        $number_of_results = count($row_for_pages);
+                        if(!isset($_REQUEST['pgn'])){
+                            $pageNumber = 1;
+                        }else{
+                            $pageNumber = $_REQUEST['pgn'];
+                        }
+
+                        $number_of_items = 3;
+
+                        $starting_number_of_a_page = ($pageNumber-1)*$number_of_items;
+
+
+
+                        $sql_product = "SELECT * FROM product WHERE ownerid=:ownerid LIMIT ".$starting_number_of_a_page.",".$number_of_items;
                         if($stmt_product = $pdo->prepare($sql_product)){
                             $stmt_product->bindParam(":ownerid",$_SESSION["id"]);
                             $stmt_product->execute();
@@ -247,11 +266,7 @@
                             echo "error";
                         }
 
-                        if(!isset($_REQUEST['pgn'])){
-                            $pageNumber = 1;
-                        }else{
-                            $pageNumber = $_REQUEST['pgn'];
-                        }
+                        
                         $numberOfPages = 10;
 
                         $startPage = $pageNumber -1;
