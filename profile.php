@@ -246,6 +246,32 @@
                         }else{
                             echo "error";
                         }
+
+                        if(!isset($_REQUEST['pgn'])){
+                            $pageNumber = 1;
+                        }else{
+                            $pageNumber = $_REQUEST['pgn'];
+                        }
+                        $numberOfPages = 10;
+
+                        $startPage = $pageNumber -1;
+                        $endPage = $pageNumber +1;
+
+                        if($startPage <= 0){
+                            $endPage -= ($startPage-1);
+                            $startPage = 1;
+                        }
+                        if($endPage > $numberOfPages){
+                            $endPage = $numberOfPages;
+                        }
+
+                        if($startPage>1){echo " ... ";}
+                        for($x=$startPage;$x<=$endPage;$x++){
+                            echo " ".$x." ";
+                        }
+                        if($endPage<$numberOfPages){
+                            echo " ... ";
+                        }
                     ?>
                 </div>
                 
