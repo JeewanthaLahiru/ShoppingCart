@@ -22,7 +22,7 @@
             <li><a href="index.php">Home</a></li>
         </ul>
     </div>
-    <div class="search">
+    <div class="search" id="searchId">
         <div class="search-container">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
                 <input type="text" name="search_key" id="search_id" placeholder="Search...">
@@ -31,6 +31,9 @@
         </div>
         <div class="cart">
             <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            <div class="notification">
+                <span>0</span>
+            </div>
         </div>
         
     </div>
@@ -185,6 +188,20 @@
             slides[slideIndex-1].style.display = "block";
             setTimeout(showSlides,3000);
         }
+
+        window.onscroll = function() {myFunction()};
+
+        var navbar = document.getElementById("searchId");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky");
+        } else {
+            navbar.classList.remove("sticky");
+        }
+        }
+
     </script>
 
     <script src="scripts/index.js"></script>
