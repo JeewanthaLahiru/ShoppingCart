@@ -332,7 +332,7 @@
             
         </div>
 
-
+    <div class="footer"></div>
     <script src="scripts/profile.js"></script>
     
 </body>

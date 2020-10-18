@@ -59,6 +59,39 @@
     }
 }
 
+.search{
+    display: flex;
+    justify-content: center;
+}
+.search a{
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    font-size: 17px;
+}
+
+.search input[type="text"]{
+    padding: 6px 10px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: 1px solid black;
+    border-radius: 4px 0 0 4px;
+    width: 500px;
+}
+
+.search .search-container button{
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: black;
+    color: white;
+    font-size: 17px;
+    border: 1px solid black;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
 
 .body{
     width: 100%;

@@ -22,6 +22,18 @@
             <li><a href="index.php">Home</a></li>
         </ul>
     </div>
+    <div class="search">
+        <div class="search-container">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
+                <input type="text" name="search_key" id="search_id" placeholder="Search...">
+                <button name="submit"><i class='fa fa-search' ></i></button>
+            </form>
+        </div>
+        <div class="cart">
+            <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+        </div>
+        
+    </div>
     <div class="body">
 
         <div class="banner">
