@@ -183,3 +183,15 @@ body{
     object-fit: cover;
 }
 
+
+.pagination a,.pagination span{
+    float: left;
+    text-decoration: none;
+    color: rgb(122, 122, 122);
+    margin: 5px;
+}
+.pagination a.active{
+    color: black;
+    font-weight: bolder;
+}
+

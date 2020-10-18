@@ -267,7 +267,7 @@
                         }
 
                         
-                        $numberOfPages = 10;
+                        $numberOfPages = ceil($number_of_results/$number_of_items);
 
                         $startPage = $pageNumber -1;
                         $endPage = $pageNumber +1;
@@ -279,14 +279,22 @@
                         if($endPage > $numberOfPages){
                             $endPage = $numberOfPages;
                         }
+                        echo "<div class='pagination'>";
 
-                        if($startPage>1){echo " ... ";}
+                        if($startPage>1){echo "<a href='profile.php?pgn=1'>First</a>  <span>...</span> ";}
                         for($x=$startPage;$x<=$endPage;$x++){
-                            echo " ".$x." ";
+                            if($pageNumber == $x){
+                                echo " <a href='profile.php?pgn=$x' class='active'>$x</a> ";
+                            }else{
+                                echo " <a href='profile.php?pgn=$x'>$x</a> ";
+                            }
+                            
                         }
-                        if($endPage<$numberOfPages){
-                            echo " ... ";
+                        if($endPage < $numberOfPages){
+                            echo " <span>...</span> <a href='profile.php?pgn=$numberOfPages'>Last</a>";
                         }
+
+                        echo "</div>";
                     ?>
                 </div>
                 
