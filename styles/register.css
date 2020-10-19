@@ -1,0 +1,12 @@
+form{
+    width: 50%;
+    margin: auto;
+}
+
+label{
+    width: 200px;
+}
+
+form input[type="text"]{
+    width: 300px;
+}
