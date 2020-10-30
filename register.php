@@ -126,6 +126,8 @@ if(empty(trim($_POST["username"]))){
 
         <input type="submit" value="Submit">
     </form>
+
+    <div class="footer"></div>
     
 </body>
 </html>
