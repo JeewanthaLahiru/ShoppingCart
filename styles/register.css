@@ -67,7 +67,7 @@
 
 
 form{
-    width: 50%;
+    width: 500px;
     margin: auto;
 }
 
@@ -76,5 +76,18 @@ label{
 }
 
 form input[type="text"]{
-    width: 300px;
+    width: 100%;
+    border: 1px solid transparent;
+    border-bottom-color: black;
+    margin: 10px 0;
+    padding: 10px 5px;
+}
+
+form input[type = "submit"]{
+    width: 100%;
+    padding: 10px ;
+    margin: 10px 0;
+    background-color:  #0097e6;
+    border: none;
+    color: white;
 }

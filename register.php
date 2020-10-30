@@ -109,23 +109,22 @@ if(empty(trim($_POST["username"]))){
     </div>
 
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-        <input type="text" name="username" value="<?php echo $username;?>">
+        <input type="text" name="username" value="<?php echo $username;?>" placeholder="Username">
         <span><?php echo $username_err; ?></span><br>
 
-        <input type="text" name="password" value="<?php echo $password; ?>">
+        <input type="text" name="password" value="<?php echo $password; ?>" placeholder="Password">
         <span><?php echo $password_err ?></span><br>
 
-        <input type="text" name="confirm_password" value="<?php echo $confirm_password; ?>">
+        <input type="text" name="confirm_password" value="<?php echo $confirm_password; ?>" placeholder="Confirm Password">
         <span><?php echo $confirm_password_err ?></span><br>
 
-        <input type="text" name="display_name" value="<?php echo $display_name; ?>">
+        <input type="text" name="display_name" value="<?php echo $display_name; ?>" placeholder="Name for display">
         <span><?php echo $display_name_err ?></span><br>
 
         <input type="radio" name="role" value="admin"><label for="admin">admin</label>
-        <input type="radio" name="role" value="user" checked><label for="user">user</label>
+        <input type="radio" name="role" value="user" checked><label for="user">user</label><br>
 
         <input type="submit" value="Submit">
-        <input type="reset" value="Reset">
     </form>
     
 </body>
