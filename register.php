@@ -93,25 +93,31 @@ if(empty(trim($_POST["username"]))){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/register.css">
+    <link rel="stylesheet" href="styles/register.css?v=<?php echo time(); ?>">
     <title>Document</title>
 </head>
 <body>
 
+    <div class="navBar" id="navBarId">
+        <ul>
+            <li class="modifylkicon"><a href="index.php" ><img src="images/modifylklogo_small.png" alt="modifylk"></a></li>
+            <li class="iconLi"><a href="javascript:void(0);" class="icon" onclick="navBarFunction()"><i class="fa fa-bars"></i></a></li>
+            <li><a href="#">Cart</a></li>
+            <li><a href="index.php">Home</a></li>
+        </ul>
+        
+    </div>
+
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-        <label for="username">Username</label>
         <input type="text" name="username" value="<?php echo $username;?>">
         <span><?php echo $username_err; ?></span><br>
 
-        <label for="passowrd">Password</label>
         <input type="text" name="password" value="<?php echo $password; ?>">
         <span><?php echo $password_err ?></span><br>
 
-        <label for="confirm_password">Confirm Password</label>
         <input type="text" name="confirm_password" value="<?php echo $confirm_password; ?>">
         <span><?php echo $confirm_password_err ?></span><br>
 
-        <label for="display_name">Name</label>
         <input type="text" name="display_name" value="<?php echo $display_name; ?>">
         <span><?php echo $display_name_err ?></span><br>
 
